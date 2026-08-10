@@ -8,18 +8,35 @@ The master code is programmed once over the serial terminal at power-up. Afterwa
 
 ---
 
+## The safe in action
+
+<p align="center">
+  <img src="docs/safe-locked.jpg" alt="NUCLEO-L552ZE-Q with LCD Keypad Shield showing LOCKED / CODE:---- on the display" width="90%">
+  <br>
+  <em>Idle locked state - waiting for the first keypad press. Four dashes mark the empty code slots.</em>
+</p>
+
+<p align="center">
+  <img src="docs/safe-unlocked.jpg" alt="The same board showing UNLOCKED / OK after a correct code entry" width="90%">
+  <br>
+  <em>After a correct 4-digit entry - the safe is open.</em>
+</p>
+
+---
+
 ## Table of contents
 
-1. [Hardware](#hardware)
-2. [How it works](#how-it-works)
-3. [State machine](#state-machine)
-4. [Peripheral configuration](#peripheral-configuration)
-5. [Timing model](#timing-model)
-6. [Source file map](#source-file-map)
-7. [Key functions](#key-functions)
-8. [Building and running](#building-and-running)
-9. [Usage walkthrough](#usage-walkthrough)
-10. [Design notes and known limitations](#design-notes-and-known-limitations)
+1. [The safe in action](#the-safe-in-action)
+2. [Hardware](#hardware)
+3. [How it works](#how-it-works)
+4. [State machine](#state-machine)
+5. [Peripheral configuration](#peripheral-configuration)
+6. [Timing model](#timing-model)
+7. [Source file map](#source-file-map)
+8. [Key functions](#key-functions)
+9. [Building and running](#building-and-running)
+10. [Usage walkthrough](#usage-walkthrough)
+11. [Design notes and known limitations](#design-notes-and-known-limitations)
 
 ---
 
@@ -27,9 +44,9 @@ The master code is programmed once over the serial terminal at power-up. Afterwa
 
 | Item | Details |
 |---|---|
-| MCU | STM32L5 series (Cortex-M33, TrustZone-capable; used in non-secure/single-domain mode) |
-| Board | Nucleo-144 class board - LPUART1 on **PG7/PG8** is the ST-LINK Virtual COM Port, `VddIO2` is enabled for port G |
-| Display | HD44780-compatible 16×2 character LCD, driven in **4-bit mode** |
+| MCU | **STM32L552ZET6Q** (Cortex-M33, TrustZone-capable; used in non-secure/single-domain mode) |
+| Board | **NUCLEO-L552ZE-Q** - LPUART1 on **PG7/PG8** is the ST-LINK Virtual COM Port, `VddIO2` is enabled for port G |
+| Display | **LCD Keypad Shield** (Arduino form factor) with an HD44780-compatible 16×2 character LCD, driven in **4-bit mode** |
 | Keypad | Resistor-ladder keypad (LCD Keypad Shield style) on a **single analog line**, read via **ADC1_IN7 / PA2** |
 | User button | On-board blue button (`BLUE_BUTTON_Pin`, active-high, polled) |
 | Serial | 115200 8N1, no flow control, over the ST-LINK VCP |
